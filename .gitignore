@@ -4,3 +4,6 @@ data/
 __pycache__/
 *.pyc
 .pytest_cache/
+target/
+logs/
+dbt_packages/
