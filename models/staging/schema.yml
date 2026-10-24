@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_yellow_trips
+    description: "Cleaned yellow taxi trips from TLC monthly Parquet files"
+    columns:
+      - name: vendor_id
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 6, 7]
+      - name: pickup_at
+        tests:
+          - not_null
+      - name: dropoff_at
+        tests:
+          - not_null
+      - name: pickup_location_id
+        tests:
+          - not_null
+      - name: total_amount
+        tests:
+          - not_null
+      - name: source_month
+        tests:
+          - not_null
+
+  - name: stg_weather
+    description: "Daily NYC weather from Open-Meteo API"
+    columns:
+      - name: weather_date
+        tests:
+          - not_null
+          - unique
+      - name: temp_max_c
+        tests:
+          - not_null
+      - name: temp_min_c
+        tests:
+          - not_null
